@@ -8,6 +8,9 @@ public class Normal_Button : MonoBehaviour
     Material mat;
     public GameObject MazeUint,Bridge;
     public bool IsItBride = false;
+    public AudioSource SoundManager;
+    public AudioClip ButtonSound;
+    bool isClicked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +26,12 @@ public class Normal_Button : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       if(other.CompareTag("Player"))
+       if(other.CompareTag("Player") && !isClicked)
        {
             MazeUint.SetActive(true);
             mat.color = new Color(0, 0.8f, 0);
-            
-
+            isClicked = true;
+            SoundManager.PlayOneShot(ButtonSound);
             if(IsItBride)
             {
                 Bridge.SetActive(false);
