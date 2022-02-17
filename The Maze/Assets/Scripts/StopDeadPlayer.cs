@@ -7,6 +7,8 @@ public class StopDeadPlayer : MonoBehaviour
 {
     Rigidbody rb;
     FirstPersonController firstPersonController;
+    public GameObject DeadManu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class StopDeadPlayer : MonoBehaviour
         {
             firstPersonController.enabled = false;
             rb.useGravity = false;
+            DeadManu.SetActive(true);
         }
     }
 }
